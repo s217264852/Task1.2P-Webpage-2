@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<!--Using a viewport meta tag to make the webpage more responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts</title>
+    <link rel="stylesheet" href="javascriptStyles.css">
+</head>
+<body>
+<div id="title">
+    <h1>Javascript Concepts</h1>
+    <p>Welcome to my Javascript concepts page. Please view the five different JavaScript methods to see them in action.</p>
+</div>
+<!--Dividing the HTML page into containers so that it can be arranged flex. This is so I can demonstrate the JavaScript methods in different flex columns on the page-->
+<!--For each column there will be a button that once pressed, will run a function to demonstrate the different methods in JavaScript-->
+<div class="container">
+    <div class="column">
+        <h2>Strings</h2>
+        <label for="inputString">Enter a String (Any Free Text):</label>
+        <input type="text" id="inputString">
+        <button onclick="applyStringMethods()">Apply String Methods</button>
+        <p id="stringOutput"></p>
+    </div>
+
+    <div class="column">
+        <h2>Numbers</h2>
+        <label for="inputNumber">Enter a Number:</label>
+        <input type="number" id="inputNumber">
+        <button onclick="applyNumberMethods()">Apply Number Methods</button>
+        <p id="numberOutput"></p>
+    </div>
+
+    <div class="column">
+        <h2>Arrays</h2>
+        <label for="inputArray">Enter an Array (Make Sure it's Comma-separated):</label>
+        <input type="text" id="inputArray">
+        <button onclick="applyArrayMethods()">Apply Array Methods</button>
+        <p id="arrayOutput"></p>
+    </div>
+
+    <div class="column">
+        <h2>Date</h2>
+        <button onclick="applyDateMethods()">Get the Date</button>
+        <p id="dateOutput"></p>
+    </div>
+
+    <div class="column">
+        <h2>Functions</h2>
+        <label for="inputName">What's Your Name?:</label>
+        <input type="text" id="inputName">
+        <button onclick="applyFunctionMethods()">Get a Greeting</button>
+        <p id="functionOutput"></p>
+    </div>
+</div>
+<!--Including Javascript in the HTML page as instructed. This is where all the JavaScript functions will be stored so that when the functions are called in each column above, they can be found here-->
+<script>
+
+    function applyStringMethods() {
+        const inputString = document.getElementById("inputString").value;
+        const outputElement = document.getElementById("stringOutput");
+        outputElement.innerHTML = `
+    You entered: <b>${inputString}</b> <br>
+    Your String is <b>${inputString.length}</b> characters long <br>
+    Your String in Uppercase: <b>${inputString.toUpperCase()}</b> <br>
+    Your String in Lowercase: <b>${inputString.toLowerCase()}</b> <br>
+    Second Character of Your String: <b>${inputString.charAt(1)}</b>`;
+    }
+    function applyNumberMethods() {
+        const inputNumber = parseFloat(document.getElementById("inputNumber").value);
+        const outputElement = document.getElementById("numberOutput");
+        outputElement.innerHTML = `
+    You Number: <b>${inputNumber}</b> <br>
+    Your Number Fixed to 2 Decimal Places: <b>${inputNumber.toFixed(2)}</b> <br>
+    Your Number Rounded to the Nearest Whole Number: <b>${Math.round(inputNumber)}</b> <br>
+    The Square Root of Your Number: <b>${Math.sqrt(inputNumber)}</b> <br>
+    Your Number in Exponential Form: <b>${inputNumber.toExponential(2)}</b>
+  `;
+    }
+    function applyArrayMethods() {
+        const inputArray = document.getElementById("inputArray").value.split(",").map(item => item.trim());
+        const outputElement = document.getElementById("arrayOutput");
+        outputElement.innerHTML = `
+    Your Array: <b>[${inputArray.join(", ")}]</b> <br>
+    Length of Your Array: <b>${inputArray.length}</b> <br>
+    Your Array in Reverse: <b>[${inputArray.reverse()}]</b><br>
+  `;
+        inputArray.push(7);
+        inputArray.reverse();
+        outputElement.innerHTML += `
+    Your Array with 7 Pushed into it: <b>[${inputArray.join(", ")}]</b> <br>
+    Last Element of Your Array: <b>[${inputArray.pop()}]</b>
+  `;
+    }
+    function applyDateMethods() {
+        const now = new Date();
+        const outputElement = document.getElementById("dateOutput");
+        outputElement.innerHTML = `
+    Current Date: <b>${now}</b> <br>
+    Current Year: <b>${now.getFullYear()}</b> <br>
+    Current Month Number: <b>${now.getMonth()}</b> <br>
+    Current Day of the Week: <b>${now.getDay()}</b> <br>
+    Current Hour of the Day: <b>${now.getHours()}</b>
+  `;
+    }
+    function applyFunctionMethods() {
+        const inputName = document.getElementById("inputName").value;
+        const outputElement = document.getElementById("functionOutput");
+        outputElement.innerHTML = `${greet(inputName)}<br>
+        Your Name is ${nameLength(inputName)} Letters Long`
+    }
+    function greet(name) {
+        return "Hello, " + name + "!";
+    }
+    function nameLength(name) {
+        return name.length;
+    }
+</script>
+
+</body>
+</html>

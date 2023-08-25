@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #17252A;
+    background-color: #3AAFA9;
+    text-align: left;
+}
+#title {
+    text-align: center;
+}
+/*Using flex display so the page is responsive*/
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+}
+/*Using flex for the columns and using fluid vales for padding, margins, and borders as opposed to pixels so that it
+adapts to the screen size rather than rely on pixel density of a screen*/
+.column {
+    flex: 1;
+    padding: 2%;
+    text-align: center;
+    background-color: #DEF2F1;
+    border-radius: 5%;
+    margin: 1%;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    border-radius: 3%;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #3AAFA9;
+    color: white;
+    padding: 2% 5%;
+    border: none;
+    border-radius: 2%;
+    cursor: pointer;
+}
+/*Making the buttons of the webpage change colour when the user hovers over them so it provides feedback to the user*/
+button:hover {
+    background-color: #2A7E7E;
+}
+
+p {
+    margin-top: 2%;
+}
